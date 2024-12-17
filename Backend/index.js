@@ -25,9 +25,6 @@ const app = express();
 const __dirname = path.resolve();
 
 
-// Enable CORS for the frontend (http://localhost:5173)
-
-
 app.use(cors({
   origin: Env_Vars.NODE_ENV === 'production' ? 'https://setflix.azurewebsites.net' : 'http://localhost:5173',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
@@ -39,7 +36,7 @@ app.use(cors({
 //console.log("Mongouri ", process.env.MongoDBURI); this code shows where is it connected on which uri in console
 
 const PORT=Env_Vars.PORT;
-connectDB();//function called for a database connection
+
 app.use(express.json());// will allow us to use req.body ..for eg i use postman to give the data entry in json format.
 app.use(cookieParser());
 //we created a variable name authRoutes for the files and imported it above so it goes to specific destination
@@ -49,10 +46,10 @@ app.use("/api/admin", adminRoute);
 
 //this knows where the frontend projekt is stored and where it runs
 if(Env_Vars.NODE_ENV==="production"){
-  app.use(express.static(path.join(__dirname,"public")));//now this is our react app
+  app.use(express.static(path.join(__dirname,"/Frontend/dist")));//now this is our react app
 
   app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname,"public","dist","index.html"))
+    res.sendFile(path.resolve(__dirname,"Frontend","dist","index.html"))
   })
   
 }
@@ -66,5 +63,7 @@ app.get('/', (req, res) => {         // / is a home route
 
 //to show on terminal if its actually running or not
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`)
+  console.log(`Server is listening on port ${PORT}`);
+  connectDB();//function called for a database connection
+
 })

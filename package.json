@@ -2,16 +2,16 @@
   "name": "setflix",
   "version": "1.0.0",
   "description": "Software projekt Streaming Anwendung",
-  "main": "index.js",
+  "main": "Backend/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon Backend/index.js",
+    "start": "cross-env NODE_ENV=production node Backend/index.js",
     "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://github.com/IamYubrajKhatri/Setflix_Stream.git"
   },
   "author": "Yubraj Khatri",
