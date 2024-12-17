@@ -124,7 +124,7 @@ function Movie() {
       <hr />
       <div className=''>
       <Slider {...settings}>
-      {filterDataB.map((item)=>(
+      {movies.map((item)=>(
           <Cards item={item} key={item._id} onDelete={handleDelete}/> // Use _id as key if MongoDB is used
         ))}
         </Slider>
