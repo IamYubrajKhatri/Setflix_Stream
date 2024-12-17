@@ -35,7 +35,7 @@ app.use(cors({
 //connect to mongo db
 //console.log("Mongouri ", process.env.MongoDBURI); this code shows where is it connected on which uri in console
 
-const PORT=process.env.PORT || 8080;
+const PORT=process.env.PORT;
 
 app.use(express.json());// will allow us to use req.body ..for eg i use postman to give the data entry in json format.
 app.use(cookieParser());
